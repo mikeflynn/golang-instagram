@@ -15,7 +15,7 @@ func (api *Api) GetMedia(mediaId string, params url.Values) (res *MediaResponse,
 }
 
 // Gets /media/shortcode/{media-id}
-func (api *Api) GetMediaShortcode(mediaShortcode string, params url.Values) (res *MediaResponse, err error) {
+func (api *Api) GetMediaByShortcode(mediaShortcode string, params url.Values) (res *MediaResponse, err error) {
 	res = new(MediaResponse)
 	err = api.get(fmt.Sprintf("/media/shortcode/%s", mediaShortcode), params, res)
 	return
