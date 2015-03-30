@@ -14,10 +14,17 @@ func (api *Api) GetMedia(mediaId string, params url.Values) (res *MediaResponse,
 	return
 }
 
+// Gets /media/shortcode/{media-id}
+func (api *Api) GetMediaShortcode(mediaShortcode string, params url.Values) (res *MediaResponse, err error) {
+	res = new(MediaResponse)
+	err = api.get(fmt.Sprintf("/media/shortcode/%s", mediaId), params, res)
+	return
+}
+
 // Search for media in a given area. The default time span is set to 5 days. The time span must not exceed 7 days. Defaults time stamps cover the last 5 days. Can return mix of image and video types.
 // Gets /media/search
 func (api *Api) GetMediaSearch(params url.Values) (res *MediasResponse, err error) {
-	res = new(MediasResponse)
+	res = new(MediaResponse)
 	err = api.get("/media/search", params, res)
 	return
 }
@@ -25,7 +32,7 @@ func (api *Api) GetMediaSearch(params url.Values) (res *MediasResponse, err erro
 // Get a list of what media is most popular at the moment. Can return mix of image and video types.
 // Gets /media/popular
 func (api *Api) GetMediaPopular(params url.Values) (res *MediasResponse, err error) {
-	res = new(MediasResponse)
+	res = new(MediaResponse)
 	err = api.get("/media/popular", params, res)
 	return
 }
